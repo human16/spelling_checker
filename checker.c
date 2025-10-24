@@ -7,6 +7,17 @@
 #define DEBUG 1
 #endif
 
+//will be used to count the number of times . or / repeat in the argument
+int count_char(char *arg, char find_char) {
+    int out = 0;
+    for (int i = 0; arg[i] != "\0"; i++) {
+        if (arg[i] == find_char) {
+            out++;
+        }
+    }
+    return out;
+}
+
 int read_inputs(int argc, char *argv[], char *suffix, char **files, char **directories) {
     if (argc < 3) {
         printf("Missing arguments");
@@ -27,6 +38,18 @@ int read_inputs(int argc, char *argv[], char *suffix, char **files, char **direc
     for (int i = 1 + 2 * (suffix_arg_exists); i < argc; i++) {
         if (!strcmp(argv[i], "-s")) {
             printf("-s appears in a place that's not the first position");
+            return 1;
+        }
+
+        int num_per = count_char(argv[i], ".");
+        if (num_per == 0) {
+            strcat(argv[i], suffix);
+        } else if (num_per > 1) {
+            printf("too many periods (.) in one argument");
+            return 1;
+        }
+        if (count_char(argv[i], "/")) {
+            
         }
         
     }
