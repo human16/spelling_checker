@@ -2,23 +2,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <dirent.h>
+#include "parser.h"
 
 #ifndef DEBUG
 #define DEBUG 1
 #endif
 
-//will be used to count the number of times . or / repeat in the argument
-int count_char(char *arg, char find_char) {
-    int out = 0;
-    for (int i = 0; arg[i] != "\0"; i++) {
-        if (arg[i] == find_char) {
-            out++;
-        }
-    }
-    return out;
-}
-
-int read_inputs(int argc, char *argv[], char *suffix, char **files, char **directories) {
+/*int read_inputs(int argc, char *argv[], char *suffix, char *files[], char *directories[], char *dictionary) {
     if (argc < 3) {
         printf("Missing arguments");
         return 1;
@@ -49,27 +40,18 @@ int read_inputs(int argc, char *argv[], char *suffix, char **files, char **direc
             return 1;
         }
         if (count_char(argv[i], "/")) {
-            
+            return 0;
         }
         
     }
 
     return 0;
 }
-
+*/
 
 int main(int argc, char *argv[]) {
-    char *suffix = ".txt";
-    char **files = malloc((argc - 1)*sizeof(char *)); // assuming all arguments are files
-    char **directories = malloc((argc - 1)*sizeof(char *)); // assuming all arguments are directories
-    int result = read_inputs(argc, argv, suffix, files, directories);
-    if (result != 0) {
-        free(files);
-        free(suffix);
-        free(directories);
-        return 1;
+    if (parse(argc, argv)) {
+        return EXIT_FAILURE;
     }
-
-
-    return 0;
+    return EXIT_SUCCESS;
 }
