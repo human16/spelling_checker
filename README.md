@@ -19,13 +19,23 @@ netid: by240, elp95
 
 [scanner.c](#scannerc)
 
+[trie.c](#triec)
+
 ## checker.c
+
+//insert documentation
 
 ## parser.c
 
 parser.c will go over the 
 
 ## scanner.c
+
+//insert documentation
+
+## trie.c
+
+//insert documentation
 
 # Planning
 
