@@ -54,6 +54,19 @@ int parse(int argc, char *argv[]) {
     } else {
         suffix = ".txt";
     }
+    struct stat file_info;
+    char *dictionary = argv[i];
+    if (stat(argv[i], &file_info) != 0) {
+        printf("stat failed, argv[i] = %s\n", argv[i]);
+        return 1;
+    }
+    if (S_ISREG(file_info.st_mode)) {
+        //insert trie population function
+    } else {
+        printf("directory is not a dictionary");
+        return 1;
+    }
+
     //char *dictionary = argv[i];
     i++;
     while (i < argc) {
