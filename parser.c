@@ -10,17 +10,6 @@
 #define DEBUG 1
 #endif
 
-//will be used to count the number of times . or / repeat in the argument
-int count_char(char *arg, char find_char) {
-    int out = 0;
-    for (int i = 0; arg[i] != '\0'; i++) {
-        if (arg[i] == find_char) {
-            out++;
-        }
-    }
-    return out;
-}
-
 int parse(int argc, char *argv[]) {
     char *suffix;
     if (argc == 2) {
@@ -30,15 +19,7 @@ int parse(int argc, char *argv[]) {
     if (!strcmp(argv[1], "-s")) {
         i = 3;
         if (argc > 2) {
-            if (argv[2][0] == '.' && count_char(argv[2], '.') == 1) {
-                suffix = argv[2];
-            } else {
-                if (DEBUG) {
-                    printf("format of suffix is invalid. First char %c, number of '.'s %d\n", argv[2][0], count_char(argv[2], '.'));
-
-                }
-                return 1;
-            }
+            suffix = argv[2];
         } else {
             if (DEBUG) {
                 printf("no suffix given after -s flag\n");
