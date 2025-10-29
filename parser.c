@@ -71,7 +71,7 @@ int parse(int argc, char *argv[]) {
         if (S_ISREG(file_info.st_mode)) {
             scan_file(argv[i]);
         } else if (S_ISDIR(file_info.st_mode)) {
-            scan_directory(argv[i]);
+            scan_directory(argv[i], suffix);
         }
 
         i++;
