@@ -10,7 +10,7 @@ struct TrieNode {
   char data;
   TrieNode* children[ALPHABET_SIZE];
   int leaf;
-}
+};
 
 TrieNode* make_trienode(char data);
 void free_trienode(TrieNode* node);
