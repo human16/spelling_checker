@@ -23,7 +23,7 @@ int count_char(char *arg, char find_char) {
 
 int parse(int argc, char *argv[]) {
     char *suffix;
-    if (argc == 1) {
+    if (argc == 2) {
         return scan_input();
     }
     int i = 1;
@@ -58,13 +58,22 @@ int parse(int argc, char *argv[]) {
     i++;
     while (i < argc) {
         struct stat file_info;
+        
+        if (DEBUG) {
+            printf("working on %s\n", argv[i]);
+        }
 
-        if (stat(argv[i], &file_info) == -1) {
-            printf("stat failed\n");
+        if (stat(argv[i], &file_info) != 0) {
+            printf("stat failed, argv[i] = %s\n", argv[i]);
             return 1;
         }
         
-        
+        if (S_ISREG(file_info.st_mode)) {
+            scan_file(argv[i]);
+        } else if (S_ISDIR(file_info.st_mode)) {
+            scan_directory(argv[i]);
+        }
+
         i++;
     }
     return 0;

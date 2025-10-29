@@ -4,32 +4,28 @@ netid: by240, elp95
 
 [Testing](#testing)
 
-[Functions](#functions)
+[Files](#files)
 
 [Planning](#planning)
 
 # Testing
 
 
-# Functions
+# Files
 
-[read_inputs()](#read_inputs)
+[checker.c](#checker)
 
-[count_char()](#count_char)
+[parser.c](#parserc)
 
-## read_inputs()
+[scanner.c](#scannerc)
 
-read_inputs will take 5 arguments
-* The amount of arguments to main (`int argc`)
-* The arguments to main (`char *argv[]`)
-* The suffix (initialized to `.txt` but could be changed in the function) (`char *suffix`)
-* The location where the array of files will be located by the function (`char **files`)
-* The location where the array of directories will be located by the function (`char **directories`)
+## checker.c
 
-read_inputs will return an `int`, which will be 0 unless an error occured.
+## parser.c
 
+parser.c will go over the 
 
-
+## scanner.c
 
 # Planning
 
