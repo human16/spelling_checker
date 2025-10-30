@@ -1,8 +1,8 @@
-#include "trie.c"
 #include "CUnit/Basic.h"
+#include "trie.c"
 
 void trie_test() {
-  TrieNode* root = make_trienode('\0');
+  TrieNode *root = make_trienode('\0');
   root = insert_trie(root, "hello");
   root = insert_trie(root, "world");
   root = insert_trie(root, "i18n");
