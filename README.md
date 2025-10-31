@@ -48,15 +48,15 @@ testing files in directories\
 will flag `badword`
 
 `./spell dict.txt test_data/dirs/sub2/story.txt`\
-another test
+another test\
 will flag `beautifull`
 
 `./spell -s .bar dict.txt test_data/dirs/sub2/code.bar`\
 will specify a suffix without a directory\
 will flag `wrng`
 
-`./spell dict.txt test_data/dirs/sub2/code.bar`
-will give a file with suffix that is not `.txt`
+`./spell dict.txt test_data/dirs/sub2/code.bar`\
+will give a file with suffix that is not `.txt`\
 will flag `wrng`
 
 `./spell dict.txt test_data`\
@@ -72,8 +72,8 @@ will flag `wrng` in that file
 will look at the file `extra_tests/large.fifi`\
 will flag the first word, `wow`, and `that's`
 
-`/.spell extra_tests\huge_dict extra_tests/large.fifi`
-will use an extra large dictionary to see how that's handled
+`/.spell extra_tests\huge_dict extra_tests/large.fifi`\
+will use an extra large dictionary to see how that's handled\
 will flag the first word in `extra_tests/large.fifi`
 
 `./spell extra_tests/huge_dict extra_tests/huge_dict extra_tests/huge_dict`\
@@ -197,7 +197,6 @@ To read the file names, the directory to the dictionary and the suffix of files,
 * If `-s` occurs, the next argument will be the suffix, following the format: `.???` for whatever the suffix is for scanning files
 * The next argument after that must be the name of the dictionary file, the rest of the argument will be either files or directories
 * Directories will be serated with `/`
-* If files have file extensions, the default suffix will not be added to them
 
 Each argument will then be forwarded to the appropriate `scanner.c` function based on it's type (file, dictionary, dictionary, or user input)
 
