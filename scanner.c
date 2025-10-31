@@ -212,6 +212,10 @@ int scan_input() {
   int linestart = 0;
   while ((bytes = read(STDIN_FILENO, buffer + col, buffer_size - col)) > 0) {
     // getting the end for this specific itteration
+    if (buffer[0] == '\n' || buffer[0] == '\0') {
+      break;
+    }
+
     int end = col + bytes;
 
     // resetting linestart at the beginning of a new line
