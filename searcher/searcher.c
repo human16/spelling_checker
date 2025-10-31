@@ -195,11 +195,11 @@ int search_word(char *word, int len, int line, int col, char *file_name) {
     free(empty_str);
   }
   if (file_name == NULL) {
-    printf("stdin:%d:%d %s\n", line, col, cleaned_word);
+    printf("stdin:%d:%d %s\n", line, col+1, cleaned_word);
     free(cleaned_word);
     return EXIT_SUCCESS;
   }
-  printf("%s:%d:%d %s\n", file_name, line, col, cleaned_word);
+  printf("%s:%d:%d %s\n", file_name, line, col+1, cleaned_word);
   free(cleaned_word);
   return EXIT_SUCCESS;
 }

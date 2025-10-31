@@ -26,6 +26,10 @@ int count_char(char *arg, char find_char) {
 int parse(int argc, char *argv[]) {
   char *suffix;
   if (argc == 2) {
+    if (!strcmp(argv[1], "-s")) {
+      printf("no suffix given after -s flag\n");
+      return EXIT_FAILURE;
+    }
     struct stat file_info;
     char *dictionary = argv[1];
     if (DEBUG) {
@@ -33,7 +37,7 @@ int parse(int argc, char *argv[]) {
     }
     if (stat(argv[1], &file_info) != 0) {
       printf("stat failed, argv[i] = %s\n", argv[1]);
-      return 1;
+      return EXIT_FAILURE;
     }
     if (S_ISREG(file_info.st_mode)) {
       TrieNode *dict_root = read_dictionary(dictionary);
@@ -52,7 +56,7 @@ int parse(int argc, char *argv[]) {
       }
     } else {
       printf("directory can't be a dictionary");
-      return 1;
+      return EXIT_FAILURE;
     }
     return scan_input();
   }
@@ -146,5 +150,5 @@ int parse(int argc, char *argv[]) {
 
     i++;
   }
-  return 0;
+  return EXIT_SUCCESS;
 }
