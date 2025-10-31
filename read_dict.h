@@ -1,1 +1,1 @@
-TrieNode *read_dictionary(char *filename);
+TrieNode *read_dict(char *filename);
