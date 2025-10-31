@@ -26,6 +26,34 @@ int count_char(char *arg, char find_char) {
 int parse(int argc, char *argv[]) {
   char *suffix;
   if (argc == 2) {
+    struct stat file_info;
+    char *dictionary = argv[1];
+    if (DEBUG) {
+      printf("Dictionary: %s\n", dictionary);
+    }
+    if (stat(argv[1], &file_info) != 0) {
+      printf("stat failed, argv[i] = %s\n", argv[1]);
+      return 1;
+    }
+    if (S_ISREG(file_info.st_mode)) {
+      TrieNode *dict_root = read_dictionary(dictionary);
+
+      if (dict_root == NULL) {
+        if (DEBUG) {
+          printf("Failed to load dictionary from %s\n", dictionary);
+        }
+        return EXIT_FAILURE;
+      }
+
+      set_dict(dict_root);
+
+      if (DEBUG) {
+        printf("Dictionary loaded successfully\n");
+      }
+    } else {
+      printf("directory can't be a dictionary");
+      return 1;
+    }
     return scan_input();
   }
   int i = 1;
@@ -33,6 +61,9 @@ int parse(int argc, char *argv[]) {
     i = 3;
     if (argc > 2) {
       if (argv[2][0] == '.' && count_char(argv[2], '.') == 1) {
+        if (DEBUG) {
+          printf("suffix is %s", argv[2]);
+        }
         suffix = argv[2];
       } else {
         if (DEBUG) {
@@ -55,10 +86,16 @@ int parse(int argc, char *argv[]) {
       return 1;
     }
   } else {
+    if (DEBUG) {
+      printf("default suffix is .txt");
+    }
     suffix = ".txt";
   }
   struct stat file_info;
   char *dictionary = argv[i];
+  if (DEBUG) {
+    printf("Dictionary: %s\n", dictionary);
+  }
   if (stat(argv[i], &file_info) != 0) {
     printf("stat failed, argv[i] = %s\n", argv[i]);
     return 1;
@@ -68,18 +105,18 @@ int parse(int argc, char *argv[]) {
 
     if (dict_root == NULL) {
       if (DEBUG) {
-        printf("Failed to load dicitonary from %s\n", dictionary);
+        printf("Failed to load dictionary from %s\n", dictionary);
       }
       return EXIT_FAILURE;
     }
 
-    set_dicitonary(dict_root);
+    set_dict(dict_root);
 
     if (DEBUG) {
-      printf("Dicitonary laoded successfully\n");
+      printf("Dictionary loaded successfully\n");
     }
   } else {
-    printf("directory is not a dictionary");
+    printf("directory can't be a dictionary");
     return 1;
   }
 

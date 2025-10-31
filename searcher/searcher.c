@@ -1,4 +1,4 @@
-#include "trie/trie.h"
+#include "../trie/trie.h"
 #include <ctype.h>
 #include <dirent.h>
 #include <fcntl.h>
