@@ -78,13 +78,13 @@ will flag the first word in `extra_tests/large.fifi`
 
 `./spell extra_tests/huge_dict extra_tests/huge_dict extra_tests/huge_dict`\
 testing efficiency\
-will return nothing
+will return nothing in reasonable time (`huge_dict` contains 20,000 entries)
 
 
 
 # Files
 
-[checker.c](#checker)
+[checker.c](#checkerc)
 
 [parser.c](#parserc)
 
@@ -104,7 +104,7 @@ will return nothing
 
 [check_directory()](#check_directory)
 
-[check_input()](#check_inpur)
+[check_input()](#check_input)
 
 #### check_file()
 
