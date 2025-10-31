@@ -1,4 +1,3 @@
-#include "trie/trie.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,4 +1,6 @@
+#include "read_dict.h"
 #include "scanner.h"
+#include "searcher/searcher.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,7 +64,20 @@ int parse(int argc, char *argv[]) {
     return 1;
   }
   if (S_ISREG(file_info.st_mode)) {
-    // insert trie population function
+    TrieNode *dict_root = read_dict(dictionary);
+
+    if (dict_root == NULL) {
+      if (DEBUG) {
+        printf("Failed to load dicitonary from %s\n", dicitonary)
+      }
+      return EXIT_FAILURE;
+    }
+
+    set_dicitonary(dict_root);
+
+    if (DEBUG) {
+      printf("Dicitonary laoded successfully\n");
+    }
   } else {
     printf("directory is not a dictionary");
     return 1;

@@ -1,4 +1,4 @@
-#include "searcher.h"
+#include "searcher/searcher.h"
 #include <dirent.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -69,7 +69,7 @@ int scan_file(char *file) {
 
           // search_word is provided with linelen-1 instead of linelen to ommit
           // the '\0'
-          if (search_word(word, linelen - 1, line, linestart)) {
+          if (search_word(word, linelen - 1, line, linestart, file)) {
             return EXIT_FAILURE;
           }
           free(word);
