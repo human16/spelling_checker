@@ -144,7 +144,8 @@ will recursively scan a directory and pass every file with extension `suffix` to
 
 #### scan_input()
 
-same functionality as `scan_file()` but with `stdin`
+same functionality as `scan_file()` but with `stdin`\
+to exit scanning function, just press enter with no input or `ctrl+c`
 
 ## trie.c
 
