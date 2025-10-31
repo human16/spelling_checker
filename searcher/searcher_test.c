@@ -1,6 +1,6 @@
+#include "../trie/trie.c"
 #include "CUnit/Basic.h"
 #include "searcher.c"
-#include "trie/trie.c"
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
