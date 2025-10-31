@@ -82,9 +82,13 @@ int parse(int argc, char *argv[]) {
         }
         
         if (S_ISREG(file_info.st_mode)) {
-            scan_file(argv[i]);
+            if (scan_file(argv[i])) {
+                return EXIT_FAILURE;
+            }
         } else if (S_ISDIR(file_info.st_mode)) {
-            scan_directory(argv[i], suffix);
+            if (scan_directory(argv[i], suffix)) {
+                return EXIT_FAILURE;
+            }
         }
 
         i++;
