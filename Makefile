@@ -3,11 +3,11 @@ CFLAGS = -g -Wall -Wvla -std=c99 -fsanitize=address,undefined
 DEBUG_OBJS = checker.o parser.o scanner.o searcher.o read_dict.o trie/trie.o
 REGULAR_OBJS = checker_reg.o parser_reg.o scanner_reg.o searcher_reg.o read_dict_reg.o trie_reg.o
 
-debug: $(DEBUG_OBJS)
-	$(CC) $(CFLAGS) $^ -o spell_debug
-
 regular: $(REGULAR_OBJS)
 	$(CC) $(CFLAGS) $^ -o spell
+
+debug: $(DEBUG_OBJS)
+	$(CC) $(CFLAGS) $^ -o spell_debug
 
 %_reg.o: %.c
 	$(CC) $(CFLAGS) -DDEBUG=0 -c $< -o $@
