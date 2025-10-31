@@ -87,7 +87,7 @@ int parse(int argc, char *argv[]) {
     }
   } else {
     if (DEBUG) {
-      printf("default suffix is .txt");
+      printf("default suffix is .txt\n");
     }
     suffix = ".txt";
   }
