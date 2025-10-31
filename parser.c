@@ -64,7 +64,7 @@ int parse(int argc, char *argv[]) {
     return 1;
   }
   if (S_ISREG(file_info.st_mode)) {
-    TrieNode *dict_root = read_dict(dictionary);
+    TrieNode *dict_root = read_dictionary(dictionary);
 
     if (dict_root == NULL) {
       if (DEBUG) {
