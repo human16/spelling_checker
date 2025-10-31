@@ -68,7 +68,7 @@ int parse(int argc, char *argv[]) {
 
     if (dict_root == NULL) {
       if (DEBUG) {
-        printf("Failed to load dicitonary from %s\n", dicitonary)
+        printf("Failed to load dicitonary from %s\n", dictionary);
       }
       return EXIT_FAILURE;
     }
