@@ -50,6 +50,10 @@
 */
 
 int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        printf("no arguments\n");
+        return EXIT_FAILURE;
+    }
     if (parse(argc, argv)) {
         return EXIT_FAILURE;
     }
