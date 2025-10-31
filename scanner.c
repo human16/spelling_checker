@@ -116,7 +116,7 @@ int scan_file(char *file) {
       if (DEBUG)
         printf("[line: %d/%d] String: %s with length: %d\n", linestart, col,
                word, linelen);
-      if (search_word(word, linelen, line, linestart)) {
+      if (search_word(word, linelen, line, linestart, file)) {
         return EXIT_FAILURE;
       }
       free(word);
@@ -241,7 +241,7 @@ int scan_input() {
 
           // search_word is provided with linelen-1 instead of linelen to ommit
           // the '\0'
-          if (search_word(word, linelen - 1, line, linestart)) {
+          if (search_word(word, linelen - 1, line, linestart, NULL)) {
             return EXIT_FAILURE;
           }
           free(word);
@@ -287,7 +287,7 @@ int scan_input() {
       if (DEBUG)
         printf("[line: %d/%d] String: %s with length: %d\n", linestart, col,
                word, linelen);
-      if (search_word(word, linelen, line, linestart)) {
+      if (search_word(word, linelen, line, linestart, NULL)) {
         return EXIT_FAILURE;
       }
       free(word);
