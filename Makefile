@@ -17,8 +17,8 @@ trie_reg.o: trie/trie.c trie/trie.h
 # Regular object dependencies
 checker_reg.o: checker.c parser.h
 parser_reg.o: parser.c scanner.h
-scanner_reg.o: scanner.c searcher.h
-searcher_reg.o: searcher.c searcher.h
+scanner_reg.o: scanner.c searcher/searcher.h
+searcher_reg.o: searcher.c searcher/searcher.h
 
 
 %.o: %.c
@@ -27,7 +27,7 @@ searcher_reg.o: searcher.c searcher.h
 
 checker.o: parser.h
 parser.o: scanner.h
-scanner.o: searcher.h
+scanner.o: searcher/searcher.h
 searcher.o: 
 trie.o:
 

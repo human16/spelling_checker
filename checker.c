@@ -1,17 +1,16 @@
+#include "parser.h"
+#include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
-#include <dirent.h>
-#include "parser.h"
+#include <unistd.h>
 
 #ifndef DEBUG
 #define DEBUG 1
 #endif
 
-/*int read_inputs(int argc, char *argv[], char *suffix, char *files[], char *directories[], char *dictionary) {
-    if (argc < 3) {
-        printf("Missing arguments");
+/*int read_inputs(int argc, char *argv[], char *suffix, char *files[], char
+*directories[], char *dictionary) { if (argc < 3) { printf("Missing arguments");
         return 1;
     }
     //making sure the suffix exists
@@ -25,7 +24,7 @@
         suffix = argv[2];
     }
 
-    //starting after the index after the suffix if it exists 
+    //starting after the index after the suffix if it exists
     for (int i = 1 + 2 * (suffix_arg_exists); i < argc; i++) {
         if (!strcmp(argv[i], "-s")) {
             printf("-s appears in a place that's not the first position");
@@ -42,7 +41,7 @@
         if (count_char(argv[i], "/")) {
             return 0;
         }
-        
+
     }
 
     return 0;
@@ -50,12 +49,12 @@
 */
 
 int main(int argc, char *argv[]) {
-    if (argc == 1) {
-        printf("no arguments\n");
-        return EXIT_FAILURE;
-    }
-    if (parse(argc, argv)) {
-        return EXIT_FAILURE;
-    }
-    return EXIT_SUCCESS;
+  if (argc == 1) {
+    printf("no arguments\n");
+    return EXIT_FAILURE;
+  }
+  if (parse(argc, argv)) {
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
 }
