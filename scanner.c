@@ -69,7 +69,7 @@ int scan_file(char *file) {
 
           // search_word is provided with linelen-1 instead of linelen to ommit
           // the '\0'
-          if (search_word(word, linelen - 1, line, linestart, file)) {
+          if (search_word(word, linelen, line, linestart, file)) {
             return EXIT_FAILURE;
           }
           free(word);
@@ -239,9 +239,7 @@ int scan_input() {
                    linestart, col, word, linelen);
           }
 
-          // search_word is provided with linelen-1 instead of linelen to ommit
-          // the '\0'
-          if (search_word(word, linelen - 1, line, linestart, NULL)) {
+          if (search_word(word, linelen, line, linestart, NULL)) {
             return EXIT_FAILURE;
           }
           free(word);
